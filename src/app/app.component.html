@@ -2,14 +2,17 @@
   <div class="columns is-centered">
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Typing Challenge</h1>
-      <p class="has-text-centered">Lorem ipsum dolor sit amet
-        {{ sentence }}</p>
+      <p class="has-text-centered">
+        <span *ngFor="let letter of letters"
+          [class]="letter.className">{{letter.letter}}</span>
+      </p>
       <div class="field">
-        <input class="input" placeholder="type here" />
+        <input autofocus class="input" placeholder="type here"
+          (input)="onTextInput($event)" />
 
       </div>
-      <div class="box has-text-centered">
-        <h1 class="title">You Win</h1>
+      <div class="box has-text-centered" *ngIf="success">
+        <h1 class="title">You Won!</h1>
       </div>
     </div>
   </div>
